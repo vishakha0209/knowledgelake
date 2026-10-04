@@ -9,7 +9,13 @@ jobs:
         with: {python-version: "3.11"}
       - run: sudo apt-get update && sudo apt-get install -y poppler-utils tesseract-ocr
       - run: pip install -e .
-      - run: python -m unittest discover -s tests -v
+      - name: Unit tests
+        run: |
+          set -o pipefail
+          python -m unittest discover -s tests -v 2>&1 | tee test-output.txt || {
+            # surface failures as annotations so they are visible without opening the raw log
+            grep -E "^(FAIL|ERROR):|Error|assert" test-output.txt | head -25 | while read -r line; do echo "::error::$line"; done
+            exit 1; }
       - name: Demo 1 - data-engineering notes with the built-in topic preset
         run: |
           kb ingest examples/sample_notes.zip --kb /tmp/kb --topics data-engineering --no-llm --build --out /tmp/pdfs
