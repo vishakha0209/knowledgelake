@@ -7,11 +7,12 @@ that look alike and differ in one detail. So this stage works like entity resolu
 
 1. **Block** - candidate pairs are each question's k nearest neighbours in embedding
    space (plus the lexical candidates), instead of all n^2 pairs.
-2. **Score** - a gradient-boosted model looks at 11 features per pair: question
+2. **Score** - a logistic-regression model looks at 11 features per pair (question
    similarity, *answer* similarity, token Jaccard, character similarity,
-   meaning-critical word agreement, length ratio, ... and outputs P(duplicate).
-   It was trained on the pairs merged or rejected in a manual review of my notes
-   (tools/train_pair_model.py); the shipped model holds only these numeric features.
+   meaning-critical word agreement, length ratio, ...) plus a few interactions, and
+   outputs P(duplicate). It was trained on the pairs merged or rejected in a manual
+   review of my notes (tools/train_pair_model.py). It ships as plain JSON weights:
+   no pickle, so it loads on any scikit-learn version and is safe to open.
 3. **Decide** - p >= AUTO merges automatically; REVIEW <= p < AUTO goes to a
    ranked review queue (CSV) that a human confirms with ``kb review``.
 """
@@ -19,6 +20,7 @@ from __future__ import annotations
 
 import csv
 import difflib
+import json
 import logging
 from pathlib import Path
 
@@ -29,7 +31,7 @@ from .embed import get_embedder, item_text
 from .models import QAItem
 
 log = logging.getLogger(__name__)
-MODEL_PATH = Path(__file__).resolve().parent / "data" / "pair_model.joblib"
+MODEL_PATH = Path(__file__).resolve().parent / "data" / "pair_model.json"
 AUTO, REVIEW = 0.8, 0.4
 FEATURES = ["q_cosine", "a_cosine", "token_jaccard", "char_ratio", "critical_equal", "critical_diff",
             "length_ratio", "both_answered", "code_answers", "min_tokens", "same_source"]
@@ -84,9 +86,38 @@ class PairScorer:
         return np.array([self.features(i, j) for i, j in pairs], dtype=float).reshape(-1, len(FEATURES))
 
 
-def load_model(path: Path = MODEL_PATH):
-    import joblib
-    return joblib.load(path)
+def expand_features(X: np.ndarray) -> np.ndarray:
+    """Base features + squares of the four similarity scores + a few interactions."""
+    X = np.asarray(X, dtype=float)
+    return np.hstack([X, X[:, :4] ** 2, X[:, [0]] * X[:, [1]], X[:, [0]] * X[:, [4]],
+                      X[:, [1]] * X[:, [4]], X[:, [2]] * X[:, [4]]])
+
+
+class PairModel:
+    """Standardise -> linear -> sigmoid, with weights stored as JSON."""
+
+    def __init__(self, mean, scale, coef, intercept, features=FEATURES, meta=None):
+        self.mean, self.scale = np.asarray(mean, float), np.asarray(scale, float)
+        self.coef, self.intercept = np.asarray(coef, float), float(intercept)
+        self.features, self.meta = list(features), meta or {}
+
+    def predict_proba(self, X) -> np.ndarray:
+        Z = (expand_features(X) - self.mean) / self.scale
+        p = 1 / (1 + np.exp(-(Z @ self.coef + self.intercept)))
+        return np.column_stack([1 - p, p])
+
+    def to_json(self) -> dict:
+        return {"features": self.features, "expanded": "base + squares(4) + 4 interactions",
+                "mean": self.mean.tolist(), "scale": self.scale.tolist(), "coef": self.coef.tolist(),
+                "intercept": self.intercept, "meta": self.meta}
+
+    @classmethod
+    def from_json(cls, d: dict) -> "PairModel":
+        return cls(d["mean"], d["scale"], d["coef"], d["intercept"], d.get("features", FEATURES), d.get("meta"))
+
+
+def load_model(path: Path = MODEL_PATH) -> PairModel:
+    return PairModel.from_json(json.loads(Path(path).read_text()))
 
 
 def score_pairs(items: list[QAItem], focus: set[int] | None = None, model=None, embedder=None):

@@ -73,7 +73,7 @@ class KnowledgeBase:
             (self.root / f"{slug(item.topic)}.json").unlink(missing_ok=True)
 
     def add(self, new_items: list[QAItem], section_order: dict[str, list[str]] | None = None,
-            semantic: bool = True) -> dict:
+            semantic: bool = True, review_min: float | None = None) -> dict:
         """Merge new items into the KB. Returns counts for reporting."""
         today = dt.date.today().isoformat()
         new_items, internal_dups = deduplicate(new_items)
@@ -85,7 +85,8 @@ class KnowledgeBase:
         if semantic and new_items:
             from .linkage import score_pairs, split_decisions
             scored = score_pairs(combined, focus=set(range(n_existing, len(combined))))
-            auto_pairs, queue = split_decisions(scored)
+            auto_pairs, queue = split_decisions(scored, review=review_min) if review_min is not None \
+                else split_decisions(scored)
 
         groups = find_groups(combined, extra_pairs=auto_pairs)
         lexical_only = {frozenset(g) for g in find_groups(combined) if len(g) > 1}

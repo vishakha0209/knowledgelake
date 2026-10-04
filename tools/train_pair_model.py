@@ -5,7 +5,7 @@
 labelled_pairs.json = {"items": [{"q": ..., "a": ..., "source": ..., "cluster": <id>}, ...]}
 Items with the same cluster id are duplicates of each other (the result of a manual
 review). My own labelled set comes from my notes and is not in the repo; the trained
-model that ships in src/knowledgelake/data/ contains only numeric feature weights.
+model that ships in src/knowledgelake/data/pair_model.json contains only numeric feature weights.
 
 Prints cross-validated results (folds split by cluster, so a duplicate group is
 never in both train and test):
@@ -24,7 +24,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from knowledgelake.dedupe import find_groups  # noqa: E402
-from knowledgelake.linkage import FEATURES, MODEL_PATH, PairScorer  # noqa: E402
+from knowledgelake.linkage import FEATURES, MODEL_PATH, PairModel, PairScorer, expand_features  # noqa: E402
 from knowledgelake.models import QAItem  # noqa: E402
 
 
@@ -59,7 +59,14 @@ def main():
     ap.add_argument("labelled")
     ap.add_argument("--save", action="store_true", help=f"fit on everything and save to {MODEL_PATH}")
     args = ap.parse_args()
-    from sklearn.ensemble import HistGradientBoostingClassifier
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.preprocessing import StandardScaler
+
+    def fit(Xtr, ytr) -> PairModel:
+        Z = expand_features(Xtr)
+        sc_ = StandardScaler().fit(Z)
+        lr = LogisticRegression(C=1.0, max_iter=2000).fit(sc_.transform(Z), ytr)
+        return PairModel(sc_.mean_, sc_.scale_, lr.coef_[0], lr.intercept_[0])
 
     data = json.load(open(args.labelled))["items"]
     items = [QAItem(q=x["q"], a=x.get("a", ""), sources=[x.get("source", "")]) for x in data]
@@ -84,8 +91,7 @@ def main():
     fold = np.array([hash(labels[i]) % 5 for i, _ in cand])
     prob = np.zeros(len(cand))
     for k in range(5):
-        m = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.05, random_state=0)
-        m.fit(X[fold != k], y[fold != k])
+        m = fit(X[fold != k], y[fold != k])
         prob[fold == k] = m.predict_proba(X[fold == k])[:, 1]
 
     print("\ncross-validated, after clustering:")
@@ -117,10 +123,10 @@ def main():
         print(f"  {target:.0%}:  lexical ranking {need(lexrank, target)}   model ranking {need(modrank, target)}")
 
     if args.save:
-        import joblib
-        m = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.05, random_state=0).fit(X, y)
+        m = fit(X, y)
+        m.meta = {"trained_on": f"{n} labelled items, {len(gold)} duplicate pairs", "model": "logistic regression"}
         MODEL_PATH.parent.mkdir(parents=True, exist_ok=True)
-        joblib.dump(m, MODEL_PATH)
+        MODEL_PATH.write_text(json.dumps(m.to_json(), indent=1))
         print(f"\nsaved {MODEL_PATH}  (features: {', '.join(FEATURES)})")
 
 

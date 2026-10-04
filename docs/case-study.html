@@ -152,7 +152,7 @@ kb ingest notes.zip --kb kb_store --build
       <article class="card">
         <div class="tag">Record linkage</div>
         <h3>Duplicates as entity resolution</h3>
-        <p>Plain embedding similarity did worse than word overlap, because SQL questions that differ in one word look alike. So I used blocking (k-nearest neighbours), pair scoring (a gradient-boosted model on 11 features, including <em>answer</em> similarity) and a review queue. To find 70% of the duplicates you check <strong>1,639</strong> pairs instead of <strong>36,382</strong>.</p>
+        <p>Plain embedding similarity did worse than word overlap, because SQL questions that differ in one word look alike. So I used blocking (k-nearest neighbours), pair scoring (a logistic-regression model on 11 features, including <em>answer</em> similarity) and a review queue. To find 70% of the duplicates you check <strong>1,407</strong> pairs instead of <strong>36,382</strong>.</p>
       </article>
       <article class="card">
         <div class="tag">Classification</div>
@@ -193,7 +193,7 @@ kb ingest notes.zip --kb kb_store --build
         <tr><td>Duplicates merged</td><td class="v">~245</td><td>automatic rules plus one manual review pass</td></tr>
         <tr><td>Topic accuracy, v1 rules</td><td class="v">83.4%</td><td><span class="mono">tools/evaluate_classifier.py</span> vs hand labels</td></tr>
         <tr><td>Topic accuracy, v2</td><td class="v">85.2%</td><td>learned model + rules, leave-source-file-out CV; 93.7% on confident items</td></tr>
-        <tr><td>Duplicate review effort</td><td class="v">22× less</td><td>pairs to check to find 70% of duplicates: 1,639 vs 36,382</td></tr>
+        <tr><td>Duplicate review effort</td><td class="v">26× less</td><td>pairs to check to find 70% of duplicates: 1,407 vs 36,382</td></tr>
         <tr><td>Retrieval Recall@5</td><td class="v">73.5%</td><td>hybrid, 234 real paraphrased queries (keyword-only 65.0%)</td></tr>
         <tr><td>Re-ingest everything again</td><td class="v">0 added</td><td>idempotent at full scale after the v2 fixes</td></tr>
         <tr><td>Generic end-to-end run</td><td class="v">23 min</td><td>fully automatic: 110 files (90 via OCR) → 1,942 unique items; the curated 1,775 adds a manual review pass</td></tr>

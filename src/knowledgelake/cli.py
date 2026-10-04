@@ -68,7 +68,7 @@ def cmd_ingest(args) -> int:
         classifier = "learned+rules" if model else "rules"
     if kb.config != cfg:
         kb.save_config(cfg)
-    report = kb.add(items, cfg.get("section_order"), semantic=not args.no_semantic)
+    report = kb.add(items, cfg.get("section_order"), semantic=not args.no_semantic, review_min=args.review_min)
     report["topics"] = {"source": source, "classifier": classifier, "count": len(cfg["topics"])}
     answered = 0 if args.no_llm else answer_missing([i for i in kb.items if not i.has_answer])
     kb.save()
@@ -156,6 +156,9 @@ def main(argv: list[str] | None = None) -> int:
     i.add_argument("--build", action="store_true", help="render PDFs after ingesting")
     i.add_argument("--out", default="pdfs")
     i.add_argument("--no-semantic", action="store_true", help="lexical de-duplication only")
+    i.add_argument("--review-min", type=float, default=None,
+                   help="lowest duplicate probability sent to the review queue (default 0.4; "
+                        "try 0.05 for small document sets, whose short questions score lower)")
     i.add_argument("--no-learned", action="store_true", help="keyword rules only for topics")
     i.set_defaults(func=cmd_ingest)
 
