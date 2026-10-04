@@ -1,0 +1,21 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils tesseract-ocr
+      - run: pip install -e .
+      - run: python -m unittest discover -s tests -v
+      - name: Demo 1 - data-engineering notes with the built-in topic preset
+        run: |
+          kb ingest examples/sample_notes.zip --kb /tmp/kb --topics data-engineering --no-llm --build --out /tmp/pdfs
+          kb ingest examples/sample_notes.zip --kb /tmp/kb --no-llm | grep '"added": 0'   # idempotent
+      - name: Demo 2 - IT/HR documents with automatically discovered topics
+        run: |
+          kb ingest examples/workplace_docs.zip --kb /tmp/kb2 --no-llm --build --out /tmp/pdfs2
+          kb topics --kb /tmp/kb2
+          kb ingest examples/workplace_docs.zip --kb /tmp/kb2 --no-llm | grep '"added": 0'

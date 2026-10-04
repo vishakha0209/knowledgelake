@@ -1,0 +1,68 @@
+{
+ "topic": "Azure Data Factory",
+ "section_order": [
+  "Fundamentals & Components",
+  "Metadata-driven Pipelines",
+  "Incremental Loads & Triggers",
+  "Performance & Monitoring",
+  "Security & CI/CD"
+ ],
+ "items": [
+  {
+   "q": "How would you design a metadata-driven pipeline that loads 100 tables without creating 100 pipelines?",
+   "a": "Use one generic pipeline driven by a control table instead of 100 pipelines.\n• Control table: source schema/table, target path, load type (full/incremental), watermark column, active flag.\n• Lookup reads the active rows → ForEach (parallel, batch count tuned to what the source can handle) → Copy activity with parameterised source and sink datasets (@item().table_name).\n• A stored procedure updates the watermark and writes an audit row per table.\nAdding a table is just a new row — no pipeline change or redeploy.",
+   "topic": "Azure Data Factory",
+   "section": "Metadata-driven Pipelines",
+   "level": null,
+   "sources": [
+    "adf_open_questions.txt"
+   ],
+   "answered_by_llm": true,
+   "added": "2026-09-30",
+   "id": 1,
+   "topic_confidence": null
+  },
+  {
+   "q": "What is the difference between a linked service and a dataset?",
+   "a": "A linked service is the connection (where): server, database, authentication, usually via Key Vault or managed identity. A dataset is the data (what): a specific table, file or folder, its format and schema, reached through a linked service. One linked service can serve many datasets.",
+   "topic": "Azure Data Factory",
+   "section": "Fundamentals & Components",
+   "level": null,
+   "sources": [
+    "adf_open_questions.txt"
+   ],
+   "answered_by_llm": true,
+   "added": "2026-09-30",
+   "id": 2,
+   "topic_confidence": null
+  },
+  {
+   "q": "How would you implement an incremental load using a watermark column?",
+   "a": "Store the last successful watermark (max modified_date) in a control table.\n1. Lookup the old watermark and the new maximum from the source.\n2. Copy only rows with modified_date > old AND <= new.\n3. MERGE into the target on the business key.\n4. Update the watermark only after the copy succeeds, so a failed run is simply retried.\nUse a small overlap window plus MERGE to catch late commits without duplicates.",
+   "topic": "Azure Data Factory",
+   "section": "Incremental Loads & Triggers",
+   "level": null,
+   "sources": [
+    "adf_open_questions.txt"
+   ],
+   "answered_by_llm": true,
+   "added": "2026-09-30",
+   "id": 3,
+   "topic_confidence": null
+  },
+  {
+   "q": "A daily file does not arrive on time. How would you alert instead of failing the pipeline?",
+   "a": "Don't let a missing file fail the pipeline.\n• Validation activity (timeout + sleep interval), or Get Metadata with the 'exists' field inside an Until loop, to wait for the file.\n• If Condition: when the file exists → run the copy; when it doesn't → call a Logic App/webhook that emails or posts to Teams 'file not received for <date>', log a MISSING status and end cleanly.\n• Optionally switch to a storage event trigger so the pipeline starts when the file actually lands.",
+   "topic": "Azure Data Factory",
+   "section": "Performance & Monitoring",
+   "level": null,
+   "sources": [
+    "adf_open_questions.txt"
+   ],
+   "answered_by_llm": true,
+   "added": "2026-09-30",
+   "id": 4,
+   "topic_confidence": null
+  }
+ ]
+}

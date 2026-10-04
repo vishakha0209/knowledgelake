@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "knowledgelake"
+version = "2.1.0"
+description = "Turn messy documents (PDFs, scans, screenshots, text) into a de-duplicated, topic-wise, searchable knowledge base"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Vishakha Garg"}]
+dependencies = ["reportlab>=4.0", "pytesseract>=0.3", "pdf2image>=1.16", "Pillow>=10.0",
+                "numpy>=1.24", "scipy>=1.10", "scikit-learn>=1.3", "joblib>=1.3", "flask>=2.3"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "playwright>=1.40"]
+neural = ["sentence-transformers>=2.7"]   # optional: pretrained embeddings instead of LSA
+
+[project.scripts]
+kb = "knowledgelake.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+knowledgelake = ["data/*.joblib", "presets/*.json"]

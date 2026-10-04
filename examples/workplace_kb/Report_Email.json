@@ -1,0 +1,64 @@
+{
+ "topic": "Report & Email",
+ "section_order": [
+  "General"
+ ],
+ "items": [
+  {
+   "q": "How do I set up multi-factor authentication (MFA)?",
+   "a": "Install the authenticator app, open the security page in the portal and scan the QR code.\nKeep the backup codes somewhere safe, not on your laptop.",
+   "topic": "Report & Email",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 1,
+   "topic_confidence": null
+  },
+  {
+   "q": "How do I report a phishing email?",
+   "a": "Use the Report phishing button in the mail client. Do not click links or open attachments.\nIf you already clicked, tell the security team immediately; it is never too late to report.",
+   "topic": "Report & Email",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 2,
+   "topic_confidence": null
+  },
+  {
+   "q": "Got a suspicious email?",
+   "a": "Press Report phishing. Never click links in it.",
+   "topic": "Report & Email",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_quick_card.png"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 3,
+   "topic_confidence": null
+  },
+  {
+   "q": "How do I book a meeting room?",
+   "a": "",
+   "topic": "Report & Email",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "new_joiner_questions.txt"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 4,
+   "topic_confidence": null
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#fff;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;color:#1f2937}
+.wrap{width:1400px;padding:36px 40px;box-sizing:border-box}
+h1{font-size:26px;margin:0 0 4px}.sub{color:#6b7280;font-size:15px;margin-bottom:26px}
+.row{display:flex;align-items:stretch;gap:0}
+.box{flex:1;border:1.5px solid #cbd5e1;border-radius:12px;padding:14px 14px 12px;background:#f8fafc}
+.box h3{margin:0 0 6px;font-size:15px;color:#1d4ed8}.box .n{font-size:11px;font-weight:700;color:#94a3b8;letter-spacing:.06em}
+.box p{margin:0;font-size:12.5px;line-height:1.45;color:#374151}
+.arrow{width:28px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:22px}
+.io{display:flex;gap:18px;margin-bottom:18px}.chip{border-radius:999px;background:#eef2ff;color:#3730a3;padding:6px 12px;font-size:13px}
+.out{background:#ecfdf5;color:#065f46}
+.note{margin-top:18px;font-size:13px;color:#4b5563;border-left:3px solid #1d4ed8;padding:8px 12px;background:#f1f5f9;border-radius:0 8px 8px 0}
+.loop{margin-top:14px;font-size:13px;color:#b45309}
+</style></head><body><div class="wrap">
+<h1>knowledgelake — pipeline</h1>
+<div class="sub">Messy documents on any subject in (PDFs, scans, screenshots, text) → a clean, de-duplicated, searchable knowledge base out</div>
+<div class="io"><span class="chip">📄 text PDFs</span><span class="chip">🖨 scanned PDFs</span><span class="chip">🖼 infographic images / GIFs</span><span class="chip">📝 .txt / .md</span><span class="chip">🗜 .zip / folders</span></div>
+<div class="row">
+<div class="box"><div class="n">1 · EXTRACT</div><h3>Text + OCR</h3><p>pdftotext for text layers; Tesseract OCR fallback when a PDF has &lt;50 chars/page or the input is an image</p></div><div class="arrow">→</div>
+<div class="box"><div class="n">2 · PARSE</div><h3>Q&amp;A segmentation</h3><p>Numbered items, Q:/A: markers, bare “…?” lines. Code lines auto-fenced for rendering</p></div><div class="arrow">→</div>
+<div class="box"><div class="n">3 · CLASSIFY</div><h3>Topic + section</h3><p>Topics discovered automatically (or a preset), then rules + a classifier trained on the KB itself. Low confidence → review queue</p></div><div class="arrow">→</div>
+<div class="box"><div class="n">4 · DEDUPE</div><h3>Merge duplicates</h3><p>Lexical Jaccard with meaning-critical tokens, plus a record-linkage model on embeddings. Unsure pairs → review queue</p></div><div class="arrow">→</div>
+<div class="box"><div class="n">5 · ANSWER</div><h3>LLM fill-in</h3><p>Question-only items answered via Anthropic API, retries/back-off, flagged ✎ as AI-written</p></div><div class="arrow">→</div>
+<div class="box"><div class="n">6 · STORE</div><h3>Topic JSON KB</h3><p>Idempotent append: new batches checked against stored questions; sources merged</p></div><div class="arrow">→</div>
+<div class="box"><div class="n">7 · RENDER</div><h3>PDF per topic</h3><p>ReportLab: cover stats, clickable contents, sections, code boxes, source on every answer</p></div>
+</div>
+<div class="io" style="margin-top:18px"><span class="chip out">📚 SQL.pdf</span><span class="chip out">📚 PySpark.pdf</span><span class="chip out">📚 Databricks.pdf</span><span class="chip out">📚 ADF.pdf</span><span class="chip out">… 13 topic PDFs</span></div>
+<div class="loop">↻ New notes later? <b>kb ingest new.zip --build</b> appends only unseen questions · <b>kb review</b> applies your queue decisions · <b>kb chat</b> answers questions from the KB (hybrid retrieval + Claude, with citations)</div>
+<div class="note">Real run: 110 files (31 PDFs · 1,300+ pages · 78 images) → 2,022 raw items → 1,775 unique Q&amp;As in 13 topic PDFs.</div>
+</div></body></html>

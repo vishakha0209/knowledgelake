@@ -1,0 +1,8 @@
+ADF open questions (answers still to write)
+
+How would you design a metadata-driven pipeline that loads 100 tables without creating 100 pipelines?
+What is the difference between a linked service and a dataset?
+How would you implement an incremental load using a watermark column?
+A daily file does not arrive on time. How would you alert instead of failing the pipeline?
+What is the difference between ROW_NUMBER, RANK and DENSE_RANK?
+Tell me about yourself.

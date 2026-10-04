@@ -1,0 +1,540 @@
+{
+  "fallback_topic": "Data Engineering Concepts & Architecture",
+  "section_order": {
+    "SQL": [
+      "Concepts & Joins",
+      "Window Functions",
+      "CTEs & Recursive SQL",
+      "Performance & Indexing",
+      "Query Practice"
+    ],
+    "PySpark & Spark": [
+      "Spark Fundamentals",
+      "DataFrame API",
+      "Performance & Tuning",
+      "Streaming"
+    ],
+    "Databricks & Delta Lake": [
+      "Platform & Lakehouse",
+      "Delta Lake",
+      "Auto Loader & Ingestion",
+      "Unity Catalog & Governance"
+    ],
+    "Azure Data Factory": [
+      "Fundamentals & Components",
+      "Metadata-driven Pipelines",
+      "Incremental Loads & Triggers",
+      "Performance & Monitoring",
+      "Security & CI/CD"
+    ]
+  },
+  "topics": {
+    "SQL": {
+      "keywords": {
+        "sql": 2,
+        "select": 1.5,
+        "join": 1,
+        "query": 1,
+        "row_number": 3,
+        "dense_rank": 3,
+        "rank": 1.5,
+        "window function": 3,
+        "cte": 3,
+        "group by": 2,
+        "having": 2,
+        "index": 2,
+        "salary": 2,
+        "employees": 1.5,
+        "customers": 1,
+        "orders": 1,
+        "duplicate": 1,
+        "subquery": 2,
+        "primary key": 2,
+        "postgres": 2,
+        "postgresql": 2,
+        "truncate": 2,
+        "where": 0.5
+      },
+      "practice_section": "Query Practice",
+      "sections": {
+        "Concepts & Joins": {
+          "difference": 1,
+          "join": 1,
+          "key": 1,
+          "union": 1,
+          "where": 1,
+          "having": 1,
+          "null": 1
+        },
+        "Window Functions": {
+          "window": 3,
+          "row_number": 3,
+          "rank": 2,
+          "lag": 3,
+          "lead": 3,
+          "over": 1,
+          "partition by": 2
+        },
+        "CTEs & Recursive SQL": {
+          "cte": 3,
+          "recursive": 3,
+          "with": 0.5
+        },
+        "Performance & Indexing": {
+          "index": 3,
+          "explain": 3,
+          "performance": 2,
+          "slow": 2,
+          "optimize": 2,
+          "scan": 2
+        }
+      }
+    },
+    "Python": {
+      "keywords": {
+        "python": 3,
+        "list": 1,
+        "dictionary": 2,
+        "dict": 2,
+        "tuple": 2,
+        "decorator": 3,
+        "generator": 3,
+        "lambda": 2,
+        "def": 1,
+        "class": 1,
+        "pandas": 2,
+        "string": 1,
+        "palindrome": 2,
+        "anagram": 3,
+        "print": 0.5
+      },
+      "sections": {
+        "Python Concepts": {
+          "what is": 1,
+          "difference": 1,
+          "decorator": 1,
+          "generator": 1
+        },
+        "Coding Problems": {
+          "write": 2,
+          "program": 2,
+          "find": 1,
+          "check": 1
+        }
+      }
+    },
+    "PySpark & Spark": {
+      "keywords": {
+        "spark": 3,
+        "pyspark": 3,
+        "dataframe": 2,
+        "rdd": 3,
+        "executor": 3,
+        "driver": 2,
+        "shuffle": 3,
+        "partition": 1.5,
+        "broadcast": 2,
+        "catalyst": 3,
+        "aqe": 3,
+        "skew": 2,
+        "cache": 2,
+        "persist": 2,
+        "udf": 2,
+        "structured streaming": 3,
+        "withcolumn": 3,
+        "coalesce": 1.5,
+        "repartition": 2
+      },
+      "sections": {
+        "Spark Fundamentals": {
+          "driver": 2,
+          "executor": 2,
+          "rdd": 2,
+          "lazy": 2,
+          "dag": 2,
+          "stage": 1,
+          "transformation": 1
+        },
+        "DataFrame API": {
+          "dataframe": 2,
+          "withcolumn": 2,
+          "join": 1,
+          "explode": 2,
+          "udf": 2,
+          "groupby": 2
+        },
+        "Performance & Tuning": {
+          "skew": 2,
+          "shuffle": 2,
+          "broadcast": 2,
+          "cache": 2,
+          "partition": 1,
+          "slow": 2,
+          "memory": 2
+        },
+        "Streaming": {
+          "stream": 3,
+          "watermark": 3,
+          "checkpoint": 2,
+          "trigger": 1
+        }
+      }
+    },
+    "Databricks & Delta Lake": {
+      "keywords": {
+        "databricks": 3,
+        "delta": 3,
+        "delta lake": 3,
+        "lakehouse": 3,
+        "unity catalog": 3,
+        "auto loader": 3,
+        "autoloader": 3,
+        "medallion": 2,
+        "vacuum": 2,
+        "optimize": 1,
+        "z-order": 3,
+        "liquid clustering": 3,
+        "time travel": 3,
+        "lakeflow": 3,
+        "dbutils": 3,
+        "photon": 3
+      },
+      "sections": {
+        "Platform & Lakehouse": {
+          "lakehouse": 2,
+          "workspace": 2,
+          "cluster": 2,
+          "compute": 2,
+          "lakeflow": 2,
+          "medallion": 3
+        },
+        "Delta Lake": {
+          "delta": 2,
+          "merge": 2,
+          "vacuum": 2,
+          "time travel": 2,
+          "_delta_log": 3,
+          "optimize": 1
+        },
+        "Auto Loader & Ingestion": {
+          "auto loader": 3,
+          "cloudfiles": 3,
+          "copy into": 2,
+          "incremental": 1
+        },
+        "Unity Catalog & Governance": {
+          "unity catalog": 3,
+          "grant": 2,
+          "governance": 2,
+          "lineage": 2,
+          "external location": 2
+        }
+      }
+    },
+    "Azure Data Factory": {
+      "keywords": {
+        "adf": 3,
+        "data factory": 3,
+        "linked service": 3,
+        "integration runtime": 3,
+        "self-hosted": 2,
+        "copy activity": 3,
+        "lookup": 1.5,
+        "foreach": 2,
+        "get metadata": 3,
+        "pipeline": 1,
+        "trigger": 1.5,
+        "tumbling": 3,
+        "mapping data flow": 3,
+        "data flow": 2,
+        "dataset": 1,
+        "watermark": 1
+      },
+      "sections": {
+        "Fundamentals & Components": {
+          "what is": 1,
+          "linked service": 2,
+          "dataset": 2,
+          "activity": 1,
+          "integration runtime": 2
+        },
+        "Metadata-driven Pipelines": {
+          "metadata": 3,
+          "lookup": 2,
+          "foreach": 2,
+          "parameter": 2,
+          "control table": 3
+        },
+        "Incremental Loads & Triggers": {
+          "incremental": 3,
+          "watermark": 3,
+          "trigger": 2,
+          "tumbling": 2,
+          "event": 1
+        },
+        "Performance & Monitoring": {
+          "slow": 2,
+          "performance": 2,
+          "monitor": 2,
+          "fail": 1,
+          "retry": 2,
+          "diu": 3,
+          "alert": 2
+        },
+        "Security & CI/CD": {
+          "key vault": 3,
+          "managed identity": 3,
+          "ci/cd": 3,
+          "security": 2,
+          "firewall": 2
+        }
+      }
+    },
+    "Azure Cloud Platform": {
+      "keywords": {
+        "azure": 1.5,
+        "adls": 3,
+        "adls gen2": 3,
+        "synapse": 3,
+        "fabric": 3,
+        "onelake": 3,
+        "key vault": 2,
+        "entra": 3,
+        "rbac": 2,
+        "private endpoint": 3,
+        "managed identity": 2,
+        "blob storage": 2,
+        "event hubs": 2
+      },
+      "sections": {
+        "Storage (ADLS Gen2)": {
+          "adls": 2,
+          "storage": 2,
+          "container": 1,
+          "tier": 2
+        },
+        "Security & Networking": {
+          "rbac": 2,
+          "key vault": 2,
+          "private endpoint": 2,
+          "identity": 2
+        },
+        "Synapse & Fabric": {
+          "synapse": 2,
+          "fabric": 2,
+          "onelake": 2
+        }
+      }
+    },
+    "Data Modeling & Warehousing": {
+      "keywords": {
+        "fact": 2,
+        "dimension": 2,
+        "star schema": 3,
+        "snowflake schema": 3,
+        "scd": 3,
+        "slowly changing": 3,
+        "surrogate key": 2,
+        "grain": 2,
+        "normalization": 2,
+        "denormalization": 2,
+        "data warehouse": 2,
+        "kimball": 3
+      },
+      "sections": {
+        "Core Concepts": {
+          "what is": 1,
+          "fact": 1,
+          "dimension": 1,
+          "schema": 1
+        },
+        "SCD & Design": {
+          "scd": 2,
+          "history": 2,
+          "design": 1,
+          "late-arriving": 2
+        }
+      }
+    },
+    "Data Engineering Concepts & Architecture": {
+      "keywords": {
+        "etl": 2,
+        "elt": 2,
+        "batch": 1.5,
+        "streaming": 1.5,
+        "idempotent": 3,
+        "orchestration": 2,
+        "airflow": 3,
+        "kafka": 3,
+        "cdc": 2,
+        "data quality": 2,
+        "lineage": 1.5,
+        "architecture": 1,
+        "ci/cd": 1.5,
+        "sla": 2,
+        "pipeline": 0.5
+      },
+      "sections": {
+        "Core Terms": {
+          "what is": 1
+        },
+        "Pipeline Design": {
+          "idempotent": 2,
+          "orchestration": 2,
+          "etl": 1,
+          "elt": 1,
+          "incremental": 1
+        },
+        "Streaming": {
+          "stream": 2,
+          "kafka": 2,
+          "exactly-once": 2,
+          "watermark": 2
+        },
+        "Operations & CI/CD": {
+          "ci/cd": 2,
+          "monitor": 2,
+          "alert": 2,
+          "deployment": 2
+        }
+      }
+    },
+    "Snowflake": {
+      "keywords": {
+        "snowflake": 3,
+        "virtual warehouse": 3,
+        "micro-partition": 3,
+        "snowpipe": 3,
+        "time travel": 1,
+        "fail-safe": 3,
+        "stage": 1,
+        "zero-copy": 3
+      },
+      "sections": {
+        "Architecture": {
+          "architecture": 2,
+          "warehouse": 1
+        },
+        "Loading & Pipelines": {
+          "copy into": 2,
+          "stream": 2,
+          "task": 2,
+          "snowpipe": 2
+        },
+        "Performance & Cost": {
+          "clustering": 2,
+          "cost": 2,
+          "pruning": 2
+        }
+      }
+    },
+    "dbt": {
+      "keywords": {
+        "dbt": 4,
+        "ref(": 3,
+        "source(": 2,
+        "materialization": 3,
+        "jinja": 3,
+        "snapshot": 1.5,
+        "dbt_project": 3,
+        "macro": 2
+      },
+      "sections": {
+        "Fundamentals": {
+          "what is": 1
+        },
+        "Models & Materializations": {
+          "model": 2,
+          "materialization": 2,
+          "incremental": 2
+        },
+        "Testing & Docs": {
+          "test": 2,
+          "docs": 2
+        }
+      }
+    },
+    "AWS": {
+      "keywords": {
+        "aws": 3,
+        "s3": 3,
+        "glue": 3,
+        "redshift": 3,
+        "athena": 3,
+        "emr": 3,
+        "kinesis": 3,
+        "lambda function": 2,
+        "dynamodb": 3,
+        "iam": 2
+      },
+      "sections": {
+        "Services": {
+          "what is": 1
+        },
+        "Architecture": {
+          "design": 2,
+          "pipeline": 1
+        }
+      }
+    },
+    "GenAI, LangChain & RAG": {
+      "keywords": {
+        "llm": 3,
+        "rag": 3,
+        "langchain": 3,
+        "langgraph": 3,
+        "embedding": 3,
+        "vector": 2,
+        "retriever": 3,
+        "prompt": 2,
+        "agent": 1.5,
+        "chunk": 2,
+        "rerank": 3,
+        "hallucination": 3
+      },
+      "sections": {
+        "LangChain": {
+          "langchain": 2,
+          "lcel": 2,
+          "prompt": 1
+        },
+        "RAG": {
+          "rag": 2,
+          "retriev": 2,
+          "embedding": 2,
+          "vector": 2,
+          "chunk": 2
+        },
+        "Agents": {
+          "agent": 2,
+          "tool": 1,
+          "langgraph": 2
+        }
+      }
+    },
+    "Behavioral & Project": {
+      "keywords": {
+        "tell me about yourself": 5,
+        "your project": 4,
+        "sprint": 3,
+        "scrum": 3,
+        "roles and responsibilities": 4,
+        "strength": 2,
+        "weakness": 3,
+        "conflict": 2,
+        "guesstimate": 4,
+        "estimate the": 2
+      },
+      "sections": {
+        "Introduction & Projects": {
+          "yourself": 2,
+          "project": 2
+        },
+        "Agile": {
+          "sprint": 2,
+          "scrum": 2
+        }
+      }
+    }
+  }
+}

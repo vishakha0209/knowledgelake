@@ -1,0 +1,39 @@
+{
+ "topic": "PySpark & Spark",
+ "section_order": [
+  "Spark Fundamentals",
+  "DataFrame API",
+  "Performance & Tuning",
+  "Streaming"
+ ],
+ "items": [
+  {
+   "q": "What is a broadcast join in Spark?",
+   "a": "The small table is copied to every executor so the large table does not need to be shuffled.\nUse it when one side comfortably fits in memory.",
+   "topic": "PySpark & Spark",
+   "section": "Performance & Tuning",
+   "level": null,
+   "sources": [
+    "sql_spark_notes.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-09-30",
+   "id": 1,
+   "topic_confidence": null
+  },
+  {
+   "q": "Why is data skew a problem in Spark?",
+   "a": "A few keys hold most rows, so one task runs far longer than the rest. Fix with AQE skew join,\nsalting, or broadcasting the smaller side.",
+   "topic": "PySpark & Spark",
+   "section": "Performance & Tuning",
+   "level": null,
+   "sources": [
+    "sql_spark_notes.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-09-30",
+   "id": 2,
+   "topic_confidence": null
+  }
+ ]
+}

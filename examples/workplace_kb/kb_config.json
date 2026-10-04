@@ -1,0 +1,92 @@
+{
+ "fallback_topic": "General",
+ "discovered": true,
+ "section_order": {},
+ "topics": {
+  "VPN & Account": {
+   "keywords": {
+    "vpn": 3.0,
+    "account": 2.31,
+    "update": 2.11,
+    "helpdesk": 2.11,
+    "client": 2.05,
+    "region": 1.9,
+    "software": 1.9,
+    "tools": 1.9,
+    "home": 1.75,
+    "request": 1.72,
+    "badge stops": 1.65,
+    "software request": 1.65
+   },
+   "sections": {}
+  },
+  "Leave & Days": {
+   "keywords": {
+    "leave": 3.0,
+    "days": 2.71,
+    "claim": 2.11,
+    "paid": 1.97,
+    "annual leave": 1.97,
+    "days annual": 1.97,
+    "travel": 1.83,
+    "leave policy": 1.83,
+    "year": 1.83,
+    "portal": 1.68,
+    "salary paid": 1.66,
+    "budget": 1.66
+   },
+   "sections": {}
+  },
+  "Laptop & Drive": {
+   "keywords": {
+    "laptop": 3.0,
+    "drive": 2.83,
+    "laptop slow": 2.55,
+    "usb": 2.25,
+    "shared team": 1.91,
+    "space": 1.91,
+    "updates": 1.91,
+    "check": 1.91,
+    "payslip": 1.91,
+    "personal usb": 1.91,
+    "replacement": 1.91,
+    "replacement laptop": 1.91
+   },
+   "sections": {}
+  },
+  "Report & Email": {
+   "keywords": {
+    "report": 3.0,
+    "report phishing": 2.69,
+    "email": 2.52,
+    "suspicious email": 2.0,
+    "security": 2.0,
+    "authentication mfa": 2.0,
+    "room": 2.0,
+    "set multi-factor": 2.0,
+    "links": 2.0,
+    "multi-factor authentication": 2.0,
+    "meeting room": 2.0,
+    "phishing email": 2.0
+   },
+   "sections": {}
+  },
+  "Password & Self-service Portal": {
+   "keywords": {
+    "password": 3.0,
+    "reset password": 2.21,
+    "forgot password": 2.21,
+    "password verify": 1.71,
+    "password self-service": 1.71,
+    "self-service portal": 1.71,
+    "password reset": 1.71,
+    "passwords": 1.41,
+    "password forgot": 1.41,
+    "portal choose": 1.41,
+    "portal forgot": 1.41,
+    "valid days": 1.41
+   },
+   "sections": {}
+  }
+ }
+}

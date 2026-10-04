@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+# your personal notes and generated KB stay local (third-party content)
+/data/
+/kb_store/
+/pdfs/
+.env

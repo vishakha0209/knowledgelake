@@ -1,0 +1,54 @@
+{
+ "topic": "Databricks & Delta Lake",
+ "section_order": [
+  "Platform & Lakehouse",
+  "Delta Lake",
+  "Auto Loader & Ingestion",
+  "Unity Catalog & Governance"
+ ],
+ "items": [
+  {
+   "q": "What is Delta Lake?",
+   "a": "Parquet data files plus a transaction log (_delta_log)\nthat adds ACID transactions, schema enforcement and time travel.",
+   "topic": "Databricks & Delta Lake",
+   "section": "Delta Lake",
+   "level": null,
+   "sources": [
+    "delta_cheatsheet.png"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-09-30",
+   "id": 1,
+   "topic_confidence": null
+  },
+  {
+   "q": "What does VACUUM do?",
+   "a": "Deletes data files no longer referenced by the log,\nolder than the retention period (default 7 days).",
+   "topic": "Databricks & Delta Lake",
+   "section": "Delta Lake",
+   "level": null,
+   "sources": [
+    "delta_cheatsheet.png"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-09-30",
+   "id": 2,
+   "topic_confidence": null
+  },
+  {
+   "q": "Explain the Medallion architecture.",
+   "a": "Bronze keeps raw data as received, Silver holds cleaned and de-duplicated data, and Gold holds\nbusiness-ready aggregates for BI and ML.",
+   "topic": "Databricks & Delta Lake",
+   "section": "Platform & Lakehouse",
+   "level": null,
+   "sources": [
+    "sql_spark_notes.pdf",
+    "delta_cheatsheet.png"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-09-30",
+   "id": 3,
+   "topic_confidence": null
+  }
+ ]
+}

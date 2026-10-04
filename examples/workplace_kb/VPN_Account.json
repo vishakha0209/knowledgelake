@@ -1,0 +1,162 @@
+{
+ "topic": "VPN & Account",
+ "section_order": [
+  "General"
+ ],
+ "items": [
+  {
+   "q": "How do I update my bank details for payroll?",
+   "a": "Change them in the HR portal before the 20th of the month so the new account is used for that month's pay.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "hr_policies.txt"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 1,
+   "topic_confidence": null
+  },
+  {
+   "q": "Can I work from home?",
+   "a": "Most roles can work from home up to 3 days a week, agreed with your manager. Some roles need to be on site.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "hr_policies.txt"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 2,
+   "topic_confidence": null
+  },
+  {
+   "q": "Can I book business class?",
+   "a": "Only for flights longer than 8 hours, and only with director approval.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "hr_policies.txt"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 3,
+   "topic_confidence": null
+  },
+  {
+   "q": "My account is locked. What should I do?",
+   "a": "Accounts lock after 5 failed sign-ins and unlock automatically after 15 minutes.\nIf you need access sooner, call the helpdesk and verify your identity.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 4,
+   "topic_confidence": null
+  },
+  {
+   "q": "How do I connect to the VPN?",
+   "a": "Open the VPN client, choose the nearest region and sign in with your work account and MFA.\nThe VPN is required for internal tools such as finance and HR systems.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 5,
+   "topic_confidence": null
+  },
+  {
+   "q": "The VPN keeps disconnecting. How can I fix it?",
+   "a": "Switch to a wired connection or a 5 GHz network, update the VPN client, and pick a closer region.\nIf it still drops every few minutes, send the client log to the helpdesk.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 6,
+   "topic_confidence": null
+  },
+  {
+   "q": "How do I request new software?",
+   "a": "Raise a software request in the service catalogue. Licensed tools need manager approval;\nfree tools on the approved list install automatically within one working day.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 7,
+   "topic_confidence": null
+  },
+  {
+   "q": "How do I set up email on my phone?",
+   "a": "Install the official mail app, sign in with your work account and accept the device policy.\nPersonal phones are supported if the screen lock is enabled.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 8,
+   "topic_confidence": null
+  },
+  {
+   "q": "How long does the helpdesk take to respond?",
+   "a": "Urgent issues (nobody can work) within 1 hour; normal requests within 1 working day.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 9,
+   "topic_confidence": null
+  },
+  {
+   "q": "VPN dropping all the time?",
+   "a": "Use wired or 5 GHz Wi-Fi, update the client, pick a closer region.",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_quick_card.png"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 10,
+   "topic_confidence": null
+  },
+  {
+   "q": "Who do I contact if my badge stops working?",
+   "a": "",
+   "topic": "VPN & Account",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "new_joiner_questions.txt"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 11,
+   "topic_confidence": null
+  }
+ ]
+}

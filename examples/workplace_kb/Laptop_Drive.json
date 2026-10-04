@@ -1,0 +1,92 @@
+{
+ "topic": "Laptop & Drive",
+ "section_order": [
+  "General"
+ ],
+ "items": [
+  {
+   "q": "My laptop is very slow. What can I try?",
+   "a": "Restart it (many issues come from weeks without a reboot), close browser tabs, check that disk\nspace is above 15 percent, and install pending updates. If that fails, book a hardware check.",
+   "topic": "Laptop & Drive",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 1,
+   "topic_confidence": null
+  },
+  {
+   "q": "How do I get a replacement laptop charger?",
+   "a": "Collect one from the IT desk on any floor, or raise a hardware request for delivery.",
+   "topic": "Laptop & Drive",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 2,
+   "topic_confidence": null
+  },
+  {
+   "q": "Can I use a personal USB drive?",
+   "a": "No. USB storage is blocked on company laptops. Share files through the company drive instead.",
+   "topic": "Laptop & Drive",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_helpdesk_faq.pdf"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 3,
+   "topic_confidence": null
+  },
+  {
+   "q": "Laptop slow?",
+   "a": "Restart first, then free disk space and install updates.",
+   "topic": "Laptop & Drive",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "it_quick_card.png"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 4,
+   "topic_confidence": null
+  },
+  {
+   "q": "How do I get access to the shared team drive?",
+   "a": "",
+   "topic": "Laptop & Drive",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "new_joiner_questions.txt"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 5,
+   "topic_confidence": null
+  },
+  {
+   "q": "Where can I see my payslip?",
+   "a": "",
+   "topic": "Laptop & Drive",
+   "section": "General",
+   "level": null,
+   "sources": [
+    "new_joiner_questions.txt"
+   ],
+   "answered_by_llm": false,
+   "added": "2026-10-04",
+   "id": 6,
+   "topic_confidence": null
+  }
+ ]
+}
